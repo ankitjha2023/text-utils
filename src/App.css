@@ -1,0 +1,13 @@
+.dark{
+    background-color:#2f3640;
+    color: #f5f6fa;
+}
+
+.light{
+    background-color: #f5f6fa;
+    color: #2f3640;
+}
+.App{
+    min-height: 100vh;
+    width: 100%;
+}
