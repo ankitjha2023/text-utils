@@ -13,6 +13,13 @@ const InputForm = () => {
             setAlert(null)
         },2000)
     }
+    function checkCharCounter(){
+        if(charCounter>0){
+            return true
+        }else{
+            return false
+        }
+    }
     const handleChange = (e) => {
         const newText = e.target.value;
         setText(newText);
@@ -28,28 +35,54 @@ const InputForm = () => {
         
     }
     const convertToUpper = () => {
+       if(checkCharCounter()){
+
         setText(text.toUpperCase())
         setAlert('Text converted to Upper Case !')
+       }else{
+        setAlert('Textarea is empty !')
+       }
         hideAlert()
     }
     const convertToLower = () => {
+       if(checkCharCounter()){
         setText(text.toLowerCase())
-        setAlert('Text converted to Lower Case !')
+        setAlert('Text Converted to Lower Case!')
+       }else{
+        setAlert('Textarea is empty !')
+       }
        hideAlert()
     }
     const removeSpace = () => {
+        if(checkCharCounter()){
         setText(text.replace(/\s+/g, ' ').trim())
         setAlert('Extra Spaces Removed !')
+        }else{
+            setAlert('There is nothing in the textarea!')
+        }
         hideAlert()
     }
     const clearText = () => {
-        setText('')
-        setAlert('Text Cleared!')
+        if(checkCharCounter()){
+            setText('')
+            setAlert('Text Cleared !')
+            setWordCounter(0);
+            setCharCounter(0);
+        }else{
+            setAlert('Already Cleared!')
+
+        }
+       
         hideAlert()
     }
     const copyText = () => {
-        navigator.clipboard.writeText(text)
-        setAlert('Text Copied to clipboard !')
+        if(checkCharCounter()){
+            navigator.clipboard.writeText(text)
+            setAlert('Text Copied to clipboard !')
+           
+        }else{
+            setAlert('Text is empty!')
+        }
         hideAlert()
     }
     
